@@ -41,6 +41,15 @@ class ShoppingCart {
         items.add(new CartItem(product, quantity));
     }
 
+    public void removeItem(Product product) {
+    for (int i = 0; i < items.size(); i++) {
+        if (items.get(i).getProduct().equals(product)) {
+            items.remove(i);
+            break;
+        }
+    }
+}
+
     public List<CartItem> getItems() {
         return items;
     }

@@ -27,6 +27,11 @@ abstract class Product {
   public String getName() {return name;}
   public int getQuantity() {return quantity;}
   public float getPrice() {return price;}
+
+  //display product information
+  public void displayProduct() {
+    System.out.println("ProductId: " + id + ", Name: " + name + ", Price: " + price + ", Quantity: " + quantity);
+  }
   
   // one product is out of stock throw exception (not just print error)
   public void reduceQuantity(int amount) {
@@ -70,3 +75,36 @@ class NonExpirableProduct extends Product {
   }
   
 }
+
+// Any object that can be shipped must be able to tell its name and weight
+interface Shippable  {
+  float getWeight();
+  String getName();
+}
+
+// ShippableProduct is a Product and a Shippable thing.
+class ShippableProduct extends Product implements Shippable {
+  private float weight;
+
+  public ShippableProduct(String id, String name, int quantity, float price, float weight) {
+      super(id, name, quantity, price);
+      this.weight = weight;
+  }
+
+  @Override
+  public boolean isExpired() {
+    return false;
+  }
+
+  @Override
+  public float getWeight() {
+    return weight;
+  }
+
+  @Override
+  public String getName() {
+    return super.getName();
+  }
+  
+}
+

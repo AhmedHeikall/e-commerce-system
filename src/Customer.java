@@ -7,7 +7,7 @@ public class Customer {
     this.balance = balance;
   }
 
-  public boolean calculateCustomerBalance (float amount) {
+  public boolean calculateCustomerBalance (double amount) {
     if (balance >= amount) {
       balance -= amount;
       return true;
